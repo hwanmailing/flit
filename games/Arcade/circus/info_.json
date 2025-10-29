@@ -1,0 +1,10 @@
+{
+    "name": "Circus Game",
+    "description": "A classic arcade-style shooter where the player controls a spaceship and must defeat waves of incoming aliens.",
+    "instructions": "Indie Studio XYZ",
+    "id":"RetroCircus",
+    "main_file": "index.html",
+    "resolution":"1024*786",
+    "thumbnail": "thumbnail.jpg"
+  }
+  

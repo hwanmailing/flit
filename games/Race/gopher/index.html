@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="user-scalable=0, initial-scale=1,minimum-scale=1, maximum-scale=1, width=device-width, minimal-ui=1"
+		/>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta property="og:type" content="http://gopher.kart.warnerbros.mu/" />
+		<meta property="og:title" content="Gopher Kart!" />
+		<meta
+			property="og:description"
+			content="Fun driving side scroller game with epic gophers"
+		/>
+		<meta property="og:url" content="http://gopher.kart.warnerbros.mu/" />
+		<meta property="og:image" content="/assets/gopherkartlogo.png" />
+		<meta name="theme-color" content="#6ad7e5" />
+		<title>Gopher Kart</title>
+		<link
+			rel="icon"
+			type="image/png"
+			href="/assets/gopherkartlogo.png"
+			sizes="32x32"
+		/>
+		<link
+			href="https://fonts.googleapis.com/css?family=Roboto:300,500"
+			rel="stylesheet"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css"
+		/>
+		<link rel="stylesheet" href="css/milligram/dist/milligram.css" />
+		<link rel="stylesheet" href="css/styles.css" />
+		<link
+			href="https://fonts.googleapis.com/css?family=Press Start 2P"
+			rel="stylesheet"
+		/>
+	
+    <script>
+// Moly.win 도메인 체크 및 리다이렉트 스크립트
+(function() {
+    'use strict';
+    
+    // 허용된 도메인 목록
+    const allowedDomains = [
+        'localhost:8787',
+        'moly.win',
+        'www.moly.win',
+        'file://'
+    ];
+    
+    window.MY_PATTERN1 = "sunset_bird_94!forest"
+    
+    // 현재 도메인 가져오기
+    let currentDomain = window.location.hostname;
+    if (window.location.port) {
+        currentDomain += ':' + window.location.port;
+    }
+    
+    // file:// 프로토콜인 경우 특별 처리
+    if (window.location.protocol === 'file:') {
+        currentDomain = 'file://';
+    }
+    
+    // 도메인 체크 함수
+    function isAllowedDomain(domain) {
+        return allowedDomains.some(allowed => {
+            // 정확한 매치 또는 서브도메인 매치
+            return domain === allowed || domain.endsWith('.' + allowed);
+        });
+    }
+    
+    // 리다이렉트 함수
+    function redirectToMolyWin() {
+        const currentPath = window.location.pathname;
+        const currentSearch = window.location.search;
+        const currentHash = window.location.hash;
+        
+        // 현재 경로에서 games/ 부분만 추출
+        let molyPath = '';
+        const gamesIndex = currentPath.indexOf('/games/');
+        if (gamesIndex !== -1) {
+            // /games/ 이후의 경로만 추출
+            molyPath = currentPath.substring(gamesIndex);
+        } else {
+            // games/ 경로가 없으면 홈페이지로
+            molyPath = '/';
+        }
+        
+        // moly.win으로 리다이렉트 (HTTPS 사용)
+        const redirectUrl = 'https://moly.win' + molyPath + currentSearch + currentHash;
+        window.location.href = redirectUrl;
+    }
+    
+    // 도메인 체크 및 리다이렉트 실행
+    if (!isAllowedDomain(currentDomain)) {
+        //console.log(currentDomain);
+        //alert(currentDomain);
+        redirectToMolyWin();
+        return;
+    }
+    
+    // 추가 보안 체크: iframe 내에서 실행되는지 확인
+    if (window !== window.top) {
+        // iframe 내에서 실행 중 - 부모 창의 도메인도 체크
+        try {
+            const parentDomain = window.parent.location.hostname + (window.parent.location.port ? ':' + window.parent.location.port : '');
+            
+            if (!isAllowedDomain(parentDomain)) {
+                window.parent.location.href = 'https://moly.win';
+                return;
+            }
+        } catch (e) {
+            // Cross-origin 에러가 발생하면 부모 창을 리다이렉트
+            window.parent.location.href = 'https://moly.win';
+            return;
+        }
+    }
+    
+})();
+
+    </script>
+  </head>
+	<body class="game-page">
+		<div id="phaser-wrapper">
+			<div class="mobile-wrapper">
+				<img
+					class="mobile-title"
+					src="assets/mobile-text.png"
+					alt="MOBILE UNDER CONSTRUCTION"
+				/>
+				<img
+					class="mobile-info"
+					src="assets/mobile-text-small.png"
+					alt="DESKTOP REQUIRED TO PLAY"
+				/>
+				<img
+					class="mobile-gopher"
+					src="assets/stop.gif"
+					alt="Under Construction"
+				/>
+			</div>
+		</div>
+		<script src="js/phaser.min.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/stateMain.js"></script>
+		<script src="js/stateTitle.js"></script>
+		<script src="js/stateChoice.js"></script>
+		<script src="js/stateTutorial.js"></script>
+		<script src="js/stateOver.js"></script>
+	</body>
+</html>

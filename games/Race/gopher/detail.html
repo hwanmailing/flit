@@ -1,0 +1,529 @@
+<!DOCTYPE html><html lang="ko"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gopher - Moly.win</title>
+    <meta name="description" content="A classic arcade-style shooter where the player controls a spaceship and must defeat waves of incoming aliens.">
+    <meta name="keywords" content="Race, 플래시게임, Gopher">
+    
+    <!-- Open Graph 태그 -->
+    <meta property="og:title" content="Gopher - Moly.win">
+    <meta property="og:description" content="A classic arcade-style shooter where the player controls a spaceship and must defeat waves of incoming aliens.">
+    <meta property="og:image" content="thumbnail.jpg">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card 태그 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gopher - Moly.win">
+    <meta name="twitter:description" content="A classic arcade-style shooter where the player controls a spaceship and must defeat waves of incoming aliens.">
+    <meta name="twitter:image" content="thumbnail.jpg">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .toolbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .toolbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            height: 60px;
+        }
+        
+        .logo {
+            flex-shrink: 0;
+            margin-right: 30px;
+        }
+        
+        .logo a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            transition: opacity 0.3s ease;
+        }
+        
+        .logo a:hover {
+            opacity: 0.8;
+        }
+        
+        .categories {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            flex: 1;
+            padding: 10px 0;
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE and Edge */
+        }
+        
+        .categories::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+        
+        .category-item {
+            flex-shrink: 0;
+        }
+        
+        .category-item a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .category-item a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-1px);
+        }
+        
+        .category-item a.active {
+            background: rgba(255, 255, 255, 0.3);
+            font-weight: bold;
+        }
+        
+        .container {
+            height: calc(100vh - 60px);
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .game-title {
+            font-size: 1.0rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .game-category {
+            background: #667eea;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 25px;
+            display: inline-block;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .main-content {
+            display: flex;
+            flex: 1;
+            gap: 10px;
+            margin: 10px;
+            min-height: 0;
+        }
+        
+        .game-info {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            flex: 1;
+            overflow-y: auto;
+        }
+        
+        .game-header {
+            margin-bottom: 20px;
+        }
+        
+        .game-description {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 20px;
+        }
+        
+        .game-instructions {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .game-instructions h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .game-instructions p {
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* 플레이어 컨테이너 */
+        .playerContainer {
+            background: white;
+            border-radius: 15px;
+            padding: 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            flex: 2;
+            display: flex;
+            flex-direction: row;
+            min-height: 0;
+            overflow: hidden;
+        }
+        
+        .player {
+            position: relative;
+            width: 100%;
+            flex: 1;
+            background: #000;
+            border-radius: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+        }
+        
+        .player-with-controls {
+            display: flex;
+            flex: 1;
+            position: relative;
+        }
+        
+        .player iframe {
+            border: none;
+            display: none;
+            background-color: #fff;
+            width: 100%;
+            height: 100%;
+            min-width: 100px;
+            min-height: 100px;
+        }
+        
+        .player iframe.active {
+            display: block;
+        }
+        
+        .thumbnail {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        
+        .thumbnail.hidden {
+            display: none;
+        }
+        
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .playButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: #667eea;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .playButton:hover {
+            background: white;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        
+        .playButton::before {
+            content: '▶';
+            margin-left: 5px;
+        }
+        
+        .controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 5px;
+            padding: 8px;
+            background: #000000ff;
+            border-radius: 0 15px 15px 0;
+            flex-shrink: 0;
+            width: 40px;
+        }
+        
+        .controls-top {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .controls-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-top: auto;
+        }
+        
+        .control-button {
+            width: 26px;
+            height: 26px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .control-button:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        
+        /* Narrow 버튼 - 세로 직사각형 */
+        .control-button.narrow::before {
+            content: '';
+            width: 8px;
+            height: 10px;
+            border: 2px solid white;
+            border-radius: 2px;
+            background: transparent;
+        }
+        
+        /* Wide 버튼 - 가로 직사각형 */
+        .control-button.wide::before {
+            content: '';
+            width: 14px;
+            height: 8px;
+            border: 2px solid white;
+            border-radius: 2px;
+            background: transparent;
+        }
+        
+        /* Fullscreen 버튼 - 단순한 정사각형 */
+        .control-button.fullscreen::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            border: 2px dashed white;
+            border-radius: 2px;
+            background: transparent;
+        }
+        
+        .control-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        
+        /* .control-button.pause::before {
+            content: '⏸';
+        }
+        
+        .control-button.play::before {
+            content: '▶';
+        }
+        
+        .control-button.fullscreen::before {
+            content: '⛶';
+        }
+        
+        .control-button.minimize::before {
+            content: '⊡';
+        } */
+        
+        
+        @media (max-width: 768px) {
+            body {
+                overflow-y: auto;
+            }
+            
+            .container {
+                height: 100%;
+                min-height: 100%;
+            }
+            
+            .game-title {
+                font-size: 2rem;
+            }
+            
+            .main-content {
+                flex-direction: column;
+                height: 100%;
+                min-height: 100%;
+            }
+            
+            .playerContainer {
+                flex-direction: column;
+                height: calc(100% - 80px);
+                flex: none;
+            }
+            
+            .player {
+                height: 100%;
+                min-height: calc(100% - 60px);
+            }
+            
+            .playButton {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+            
+            .controls {
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+                padding: 10px;
+                border-radius: 0px 0px 15px 15px;
+                position: relative;
+                right: auto;
+                top: auto;
+                bottom: auto;
+                height: 60px;
+                flex-shrink: 0;
+            }
+            
+            .controls-top {
+                flex-direction: row;
+                gap: 0;
+                margin-top: 0;
+            }
+            
+            .controls-bottom {
+                flex-direction: row;
+                gap: 0;
+                margin-top: 0;
+            }
+            
+            /* .control-button.narrow {
+                display: none;
+            } */
+            
+            /*             .control-button {
+                width: 32px;
+                height: 32px;
+                padding: 0;
+                font-size: 12px;
+            }
+            
+            .control-button.wide {
+                display: none;
+            } */
+            
+            .game-info {
+                flex: none;
+                height: auto;
+                min-height: auto;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 툴바 -->
+    <nav class="toolbar">
+        <div class="toolbar-container">
+            <div class="logo">
+                <a href="/index.html">Moly.win</a>
+            </div>
+            <div class="categories">
+                <div class="category-item">
+                    <a href="/index.html">전체</a>
+                </div>
+                <div class="category-item">
+                    <a href="/index.html?cat=Arcade">Arcade</a>
+                </div>
+                <div class="category-item">
+                    <a href="/index.html?cat=Board">Board</a>
+                </div>
+                <div class="category-item">
+                    <a href="/index.html?cat=Escape">Escape</a>
+                </div>
+                <div class="category-item">
+                    <a href="/index.html?cat=Logic">Logic</a>
+                </div>
+                <div class="category-item">
+                    <a href="/index.html?cat=Race">Race</a>
+                </div>
+                <div class="category-item">
+                    <a href="/index.html?cat=Shooting">Shooting</a>
+                </div>
+                <div class="category-item">
+                    <a href="/index.html?cat=platformer">Platformer</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="main-content">
+            <div class="playerContainer" id="playerContainer" data-thumbnail="thumbnail.jpg" data-name="Gopher" data-game-url="index.html" data-resolution="1024*786">
+                <!-- JavaScript로 동적 생성 -->
+            </div>
+            
+            <div class="game-info">
+                <div class="game-header">
+                    <h1 class="game-title">Gopher</h1>
+                    <span class="game-category">Race</span>
+                </div>
+                
+                <div class="game-description">
+                    A classic arcade-style shooter where the player controls a spaceship and must defeat waves of incoming aliens.
+                </div>
+                
+                <div class="game-instructions">
+                    <h3>🎮 게임 조작법</h3>
+                    <p>Indie Studio XYZ</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>(()=>{let e=!1,t=!1,n="",l=0,o=0,i=null;function a(){return window.innerWidth<=768}function s(){const t=document.getElementById("playerContainer"),a={thumbnail:t.getAttribute("data-thumbnail"),name:t.getAttribute("data-name"),gameUrl:t.getAttribute("data-game-url"),resolution:t.getAttribute("data-resolution")};n=a.resolution;const s=function(e){if(!e)return{width:0,height:0};const t=e.split("x");return 2!==t.length?{width:0,height:0}:{width:parseInt(t[0],10)||0,height:parseInt(t[1],10)||0}}(a.resolution);l=s.width,o=s.height,t.innerHTML='\n        <div class="player-with-controls">\n            <div class="player">\n                <div class="thumbnail" id="thumbnail">\n                    <img id="thumbnailImg" alt="">\n                    <button class="playButton" id="playButton"></button>\n                </div>\n                <iframe id="gameFrame"></iframe>\n            </div>\n        </div>\n         <div class="controls" id="controls">\n             <div class="controls-top">\n                 <button class="control-button narrow" id="normalBtn" title="Toggle View"></button>\n             </div>\n             <div class="controls-bottom">\n                 <button class="control-button fullscreen" id="fullscreenBtn" title="Full Screen"></button>\n             </div>\n         </div>\n    ',document.getElementById("thumbnailImg").src=a.thumbnail,document.getElementById("thumbnailImg").alt=a.name,i=document.getElementById("gameFrame"),i.dataset.gameUrl=a.gameUrl,document.getElementById("playButton").addEventListener("click",c),document.getElementById("normalBtn").addEventListener("click",u),document.getElementById("fullscreenBtn").addEventListener("click",()=>m("fullscreen")),i.addEventListener("load",d),window.addEventListener("keydown",t=>{if(e&&i&&i.contentWindow)try{i.contentWindow.postMessage({type:"keydown",key:t.key,code:t.code,ctrlKey:t.ctrlKey,shiftKey:t.shiftKey,altKey:t.altKey,metaKey:t.metaKey},"*")}catch(e){}e&&i&&i.focus()}),window.addEventListener("keyup",t=>{if(e&&i&&i.contentWindow)try{i.contentWindow.postMessage({type:"keyup",key:t.key,code:t.code,ctrlKey:t.ctrlKey,shiftKey:t.shiftKey,altKey:t.altKey,metaKey:t.metaKey},"*")}catch(e){}})}function c(){if(e)return;const t=document.getElementById("thumbnail"),n=document.getElementById("gameFrame");document.getElementById("controls");t.classList.add("hidden"),n.classList.add("active"),n.src=n.dataset.gameUrl,e=!0}function d(){}let r="normal";function u(){m("normal"===r?"landscape":"normal")}function m(n){const l=document.querySelector(".game-info"),o=document.querySelector(".container"),s=document.querySelector(".player"),c=document.getElementById("fullscreenBtn"),d=document.getElementById("normalBtn");switch(r=n,n){case"normal":l.style.display="block",o.style.flexDirection="row",d.classList.remove("narrow"),d.classList.add("wide");break;case"landscape":if(a())return void m("normal");l.style.display="none",o.style.flexDirection="row",d.classList.remove("wide"),d.classList.add("narrow");break;case"fullscreen":if(t)return document.exitFullscreen?document.exitFullscreen():document.webkitExitFullscreen?document.webkitExitFullscreen():document.msExitFullscreen&&document.msExitFullscreen(),t=!1,void(c.title="Full Screen");s.requestFullscreen?s.requestFullscreen():s.webkitRequestFullscreen?s.webkitRequestFullscreen():s.msRequestFullscreen&&s.msRequestFullscreen(),t=!0,c.title="전체화면 종료";break;default:return}e&&i&&i.contentWindow&&setTimeout(()=>{try{i.contentWindow.postMessage({type:"resize",width:i.offsetWidth,height:i.offsetHeight},"*")}catch(e){}},100)}document.addEventListener("fullscreenchange",function(){document.fullscreenElement||(t=!1,document.getElementById("fullscreenBtn").style.display="flex",document.getElementById("minimizeBtn").style.display="none")}),document.addEventListener("DOMContentLoaded",function(){s(),l>=768&&!a()?m("landscape"):m("normal"),function(e,t,n){const l=window.matchMedia("(max-width: 768px)"),o=window.matchMedia("(min-width: 769px) and (max-width: 1024px)"),i=window.matchMedia("(min-width: 1025px)");function a(){l.matches?e():o.matches?t():i.matches&&n()}function s(){a()}a(),l.addEventListener("change",s),o.addEventListener("change",s),i.addEventListener("change",s)}(function(){const e=document.querySelector(".game-info");e&&"none"===e.style.display&&m("normal");const t=document.getElementById("normalBtn");t&&(t.style.display="none")},function(){const e=document.getElementById("normalBtn");e&&(e.style.display="flex")},function(){const e=document.getElementById("normalBtn");e&&(e.style.display="flex")});const e="{{category}}";if(e){const t=document.querySelector(`a[href="/index.html?cat=${e}"]`);t&&t.classList.add("active")}document.querySelectorAll(".header, .playerContainer").forEach((e,t)=>{e.style.opacity="0",e.style.transform="translateY(30px)",setTimeout(()=>{e.style.transition="opacity 0.5s ease, transform 0.5s ease",e.style.opacity="1",e.style.transform="translateY(0)"},200*t)})})})();</script>
+
+</body></html>
