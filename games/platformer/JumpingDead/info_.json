@@ -5,6 +5,7 @@
     "id":"JumpingDead",
     "main_file": "index.html",
     "resolution":"1024*786",
-    "thumbnail": "thumbnail.jpg"
+    "thumbnail": "thumbnail.jpg",
+    "is_mobile_game": false
   }
   

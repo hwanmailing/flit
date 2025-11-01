@@ -5,6 +5,7 @@
     "id":"Minesweeper",
     "main_file": "index.html",
     "resolution":"940x500",
-    "thumbnail": "thumbnail.jpg"
+    "thumbnail": "thumbnail.jpg",
+    "is_mobile_game": false
   }
   
