@@ -472,7 +472,6 @@
     #google-login-button {
         flex-shrink: 0;
     }
-    
 
     /* 사용자 메뉴 */
     .user-menu {
@@ -672,12 +671,8 @@
         background: rgba(0, 0, 0, 0.1);
     }
     
-    /* 900px 이하에서 Login 버튼 숨김 및 검색바를 아이콘으로 변경 */
+    /* 900px 이하에서 검색바를 아이콘으로 변경 및 구글 로그인 버튼 정사각형으로 */
     @media (max-width: 900px) {
-        #google-login-button {
-            display: none;
-        }
-        
         .user-menu {
             display: none;
         }
@@ -694,6 +689,18 @@
             justify-content: flex-end;
         }
         
+        /* 구글 로그인 버튼을 정사각형으로 만들기 */
+        #google-login-button {
+            overflow: hidden;
+        }
+        
+        /* 구글 버튼의 내부 iframe과 버튼 요소를 정사각형으로 제한 */
+        #google-login-button > div,
+        #google-login-button iframe {
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 8px !important;
+        }
     }</style><nav class="top-toolbar"><div class="top-toolbar-container"><div class="logo"><a href="https://www.moly.win/index.html">🎮 Moly.win</a></div><div class="search-container"><div class="search-wrapper"><input type="text" class="search-box" id="searchBox" placeholder="검색어를 입력하세요..."> <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="rgba(0, 0, 0, 0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg></div></div><div class="top-toolbar-right"><button class="search-icon-button" id="searchIconButton"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg></button><div id="google-login-button"></div><div class="user-menu"><button class="user-button" id="userButton"><img src="" alt="User" class="user-avatar" id="userAvatar"></button><div class="user-dropdown" id="userDropdown"><div class="user-dropdown-item" id="userInfo"><div style="font-weight: 600; margin-bottom: 5px;" id="userName"></div><div style="font-size: 0.85rem; color: rgba(0,0,0,0.6);" id="userEmail"></div></div><div class="user-dropdown-item logout" id="logoutItem">로그아웃</div></div></div></div></div></nav><div class="nickname-modal hidden" id="nickname-modal"><div class="nickname-modal-content"><div class="nickname-modal-header"><h3 class="nickname-modal-title">닉네임 설정</h3><button class="close-nickname-modal" id="closeNicknameModal">×</button></div><div class="nickname-input-wrapper"><input type="text" class="nickname-input" id="nickname-input" placeholder="닉네임을 입력하세요 (2-20자)" maxlength="20"><div class="nickname-error hidden" id="nickname-error"></div></div><div class="nickname-modal-actions"><button class="nickname-modal-btn cancel" id="cancel-nickname">취소</button> <button class="nickname-modal-btn confirm" id="confirm-nickname">확인</button></div></div></div><div class="search-modal" id="searchModal"><div class="search-modal-header"><div class="search-modal-input-wrapper"><input type="text" class="search-modal-input" id="searchModalInput" placeholder="검색어를 입력하세요..."> <svg class="search-modal-input-icon" viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="M21 21l-4.35-4.35"></path></svg></div><button class="search-modal-close" id="searchModalClose"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button></div><div class="search-history-section"><div class="search-history-title"><span>검색 기록</span> <button class="search-history-clear" id="searchHistoryClear">전체 삭제</button></div><ul class="search-history-list" id="searchHistoryList"></ul></div></div><script>(function() {
     const SEARCH_HISTORY_KEY = 'moly_search_history';
     const MAX_HISTORY_ITEMS = 30;
