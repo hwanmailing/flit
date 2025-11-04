@@ -6,6 +6,8 @@
     "main_file": "index.html",
     "resolution":"940x500",
     "thumbnail": "thumbnail.jpg",
-    "is_mobile_game": false
+    "is_mobile_game": false,
+    "leftKeys": ["ArrowLeft", "ArrowUp", "ArrowDown", "ArrowRight"],
+    "rightKeys": ["W", "A", "S", "D", "Space", "Enter", "Escape"]
   }
   
