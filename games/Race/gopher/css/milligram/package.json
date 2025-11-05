@@ -1,7 +1,8 @@
 {
 	"name": "milligram",
 	"version": "1.3.0",
-	"description": "A minimalist CSS framework.",
+	"summary": "Chess is a two-player",
+    "description": "A minimalist CSS framework.",
 	"homepage": "https://milligram.github.io",
 	"repository": "milligram/milligram",
 	"license": "MIT",
