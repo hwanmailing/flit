@@ -8,6 +8,7 @@
     "resolution":"1024*786",
     "thumbnail": "thumbnail.jpg",
     "is_mobile_game": false,
+    "is_prime_game": false,
     "leftKeys": ["ArrowLeft", "ArrowUp", "ArrowDown", "ArrowRight"],
     "rightKeys": ["W", "A", "S", "D", "Space", "Enter", "Escape"]
   }
