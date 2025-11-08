@@ -1,67 +1,56 @@
-name: Update info_.js
+name: Test Update info_.js
 
 on:
-  schedule:
-    - cron: '0 0 * * *'   # UTC 기준, 매일 00:00에 실행 (한국 시간 09:00)
-  workflow_dispatch:      # 수동 실행 가능
+  workflow_dispatch:  # 수동 실행만, 스케줄 제외
 
 jobs:
-  update-info:
+  test-update:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Fetch games data from Cloudflare D1 API
+      - name: Test API fetch
         env:
           API_URL: ${{ secrets.API_URL }}
         run: |
-          echo "Fetching games data from Cloudflare D1..."
+          echo "1️⃣ Testing API fetch..."
+          RESPONSE=$(curl -fsS "$API_URL") || { echo "❌ API fetch failed"; exit 1; }
+          echo "✅ API fetch succeeded"
+          echo "Sample response:"
+          echo "$RESPONSE" | head -n 5
 
-          # API에서 JSON 데이터 가져오기
-          RESPONSE=$(curl -fsS "$API_URL") || { echo "API fetch failed"; exit 1; }
-
-          # success 체크
-          SUCCESS=$(echo "$RESPONSE" | jq -r '.success')
+      - name: Test parsing JSON
+        run: |
+          echo "2️⃣ Testing JSON parsing..."
+          SUCCESS=$(echo "$RESPONSE" | jq -r '.success') || { echo "❌ JSON parse failed"; exit 1; }
+          echo "API success value: $SUCCESS"
           if [ "$SUCCESS" != "true" ]; then
-            echo "API returned success: false"
+            echo "❌ API returned success: false"
             exit 1
           fi
-
-          # data 배열 추출
           GAMES_DATA=$(echo "$RESPONSE" | jq -c '.data')
+          echo "✅ JSON parsed. Sample data:"
+          echo "$GAMES_DATA" | head -n 5
 
-          # info_.js 파일 생성
-          cat > info_.js << 'EOF'
-// Games 테이블 데이터 (빌드 시 생성됨)
-// 이 파일은 빌드 시 D1 데이터베이스에서 자동으로 생성됩니다.
+      - name: Test writing info_.js
+        run: |
+          echo "3️⃣ Testing writing info_.js..."
+          cat > info_.js <<'EOF'
 window.GAMES_DB_DATA =
 EOF
-
-          # JSON 데이터를 보기 좋게 포맷팅하여 추가
           echo "$GAMES_DATA" | jq '.' >> info_.js
-
-          # 세미콜론 추가
           echo ";" >> info_.js
+          echo "✅ info_.js created. First 10 lines:"
+          head -n 10 info_.js
 
-          # 결과 확인
-          echo "Generated info_.js:"
-          head -n 30 info_.js
-
-      - name: Commit and push if changed
-        env:
-          GIT_USER_NAME: hwanmailing
-          GIT_USER_EMAIL: hwanmailing@github.com
+      - name: Test git commit (dry-run)
         run: |
-          git config user.name "$GIT_USER_NAME"
-          git config user.email "$GIT_USER_EMAIL"
-
-          # 변경사항 확인
+          echo "4️⃣ Testing git diff..."
+          git config user.name "test-user"
+          git config user.email "test@example.com"
           if git diff --quiet info_.js; then
-            echo "No changes in info_.js, skipping commit."
+            echo "No changes detected. ✅"
           else
-            git add info_.js
-            git commit -m "chore: auto update info_.js with latest D1 data [skip ci]"
-            git push
-            echo "Successfully pushed updated info_.js"
+            echo "Changes detected. Would commit. ✅"
           fi
