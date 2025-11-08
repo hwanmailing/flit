@@ -16,20 +16,21 @@ jobs:
         env:
           API_URL: ${{ secrets.API_URL }}
         run: |
-          echo "Fetching games data from Cloudflare D1..."
-          RESPONSE=$(curl -fsS "$API_URL") || { echo "API fetch failed"; exit 1; }
+          echo "1️⃣ Fetching games data from Cloudflare D1..."
+          RESPONSE=$(curl -fsS "$API_URL") || { echo "❌ API fetch failed"; exit 1; }
           SUCCESS=$(echo "$RESPONSE" | jq -r '.success')
           if [ "$SUCCESS" != "true" ]; then
-            echo "API returned success: false"
+            echo "❌ API returned success: false"
             exit 1
           fi
           GAMES_DATA=$(echo "$RESPONSE" | jq -c '.data')
 
+          echo "2️⃣ Writing info_.js..."
           echo "window.GAMES_DB_DATA =" > info_.js
           echo "$GAMES_DATA" | jq '.' >> info_.js
           echo ";" >> info_.js
 
-          echo "Generated info_.js:"
+          echo "✅ Generated info_.js. First 30 lines:"
           head -n 30 info_.js
 
       - name: Commit and push if changed
@@ -37,12 +38,16 @@ jobs:
           GIT_USER_NAME: hwanmailing
           GIT_USER_EMAIL: hwanmailing@github.com
         run: |
+          echo "3️⃣ Configuring git..."
           git config user.name "$GIT_USER_NAME"
           git config user.email "$GIT_USER_EMAIL"
+
+          echo "4️⃣ Checking for changes..."
           if git diff --quiet info_.js; then
-            echo "No changes in info_.js, skipping commit."
+            echo "ℹ️ No changes in info_.js, skipping commit."
           else
             git add info_.js
             git commit -m "chore: auto update info_.js with latest D1 data [skip ci]"
             git push
-            echo "Successfully pushed updated info_.js"
+            echo "✅ Successfully pushed updated info_.js"
+          fi
