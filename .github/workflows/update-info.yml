@@ -1,54 +1,48 @@
-name: Update Script info_.js
+name: Update info_.js
 
 on:
-  workflow_dispatch:  # 수동 실행만, 스케줄 제외
+  schedule:
+    - cron: '0 0 * * *'   # UTC 기준, 매일 00:00에 실행 (한국 시간 09:00)
+  workflow_dispatch:      # 수동 실행 가능
 
 jobs:
-  test-update:
+  update-info:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Test API fetch
+      - name: Fetch games data from Cloudflare D1 API
         env:
           API_URL: ${{ secrets.API_URL }}
         run: |
-          echo "1️⃣ Testing API fetch..."
-          RESPONSE=$(curl -fsS "$API_URL") || { echo "❌ API fetch failed"; exit 1; }
-          echo "✅ API fetch succeeded"
-          echo "Sample response:"
-          echo "$RESPONSE" | head -n 5
-
-      - name: Test parsing JSON
-        run: |
-          echo "2️⃣ Testing JSON parsing..."
-          SUCCESS=$(echo "$RESPONSE" | jq -r '.success') || { echo "❌ JSON parse failed"; exit 1; }
-          echo "API success value: $SUCCESS"
+          echo "Fetching games data from Cloudflare D1..."
+          RESPONSE=$(curl -fsS "$API_URL") || { echo "API fetch failed"; exit 1; }
+          SUCCESS=$(echo "$RESPONSE" | jq -r '.success')
           if [ "$SUCCESS" != "true" ]; then
-            echo "❌ API returned success: false"
+            echo "API returned success: false"
             exit 1
           fi
           GAMES_DATA=$(echo "$RESPONSE" | jq -c '.data')
-          echo "✅ JSON parsed. Sample data:"
-          echo "$GAMES_DATA" | head -n 5
 
-      - name: Test writing info_.js
-        run: |
-          echo "3️⃣ Testing writing info_.js..."
           echo "window.GAMES_DB_DATA =" > info_.js
           echo "$GAMES_DATA" | jq '.' >> info_.js
           echo ";" >> info_.js
-          echo "✅ info_.js created. First 10 lines:"
-          head -n 10 info_.js
 
-      - name: Test git commit (dry-run)
+          echo "Generated info_.js:"
+          head -n 30 info_.js
+
+      - name: Commit and push if changed
+        env:
+          GIT_USER_NAME: hwanmailing
+          GIT_USER_EMAIL: hwanmailing@github.com
         run: |
-          echo "4️⃣ Testing git diff..."
-          git config user.name "test-user"
-          git config user.email "test@example.com"
+          git config user.name "$GIT_USER_NAME"
+          git config user.email "$GIT_USER_EMAIL"
           if git diff --quiet info_.js; then
-            echo "No changes detected. ✅"
+            echo "No changes in info_.js, skipping commit."
           else
-            echo "Changes detected. Would commit. ✅"
-          fi
+            git add info_.js
+            git commit -m "chore: auto update info_.js with latest D1 data [skip ci]"
+            git push
+            echo "Successfully pushed updated info_.js"
