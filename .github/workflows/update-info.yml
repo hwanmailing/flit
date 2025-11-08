@@ -14,7 +14,7 @@ jobs:
 
       - name: Fetch games data from Cloudflare D1 API
         env:
-          API_URL: https://molyserver.by4bit.workers.dev/api/games
+          API_URL: ${{ secrets.API_URL }}
         run: |
           echo "Fetching games data from Cloudflare D1..."
 
