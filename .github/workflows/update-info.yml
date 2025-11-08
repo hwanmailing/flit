@@ -1,4 +1,4 @@
-name: Test Update info_.js
+name: Update Script info_.js
 
 on:
   workflow_dispatch:  # 수동 실행만, 스케줄 제외
