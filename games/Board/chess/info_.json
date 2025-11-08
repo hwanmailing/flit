@@ -1,8 +1,24 @@
 {
-    "name": "🎮 Chess",
-    "summary": "Chess is a two-player",
-    "description": "A classic arcade-style shooter where the player controls a spaceship and must defeat waves of incoming aliens.",
-    "instructions": "Indie Studio XYZ",
+    "name": {
+        "en": "🎮 Chess",
+        "ko": "🎮 체스",
+        "jp": "🎮 チェス"
+    },
+    "summary": {
+        "en": "Chess is a two-player",
+        "ko": "체스는 두 명이 겨루는 전략 게임입니다.",
+        "jp": "チェスは2人で遊ぶ戦略ゲームです。"
+    },
+    "description": {
+        "en": "A classic arcade-style shooter where the player controls a spaceship and must defeat waves of incoming aliens.",
+        "ko": "플레이어가 우주선을 조종해 몰려오는 외계인을 물리치는 클래식 아케이드 슈팅 게임입니다.",
+        "jp": "プレイヤーが宇宙船を操作して敵のエイリアンを倒すクラシックなアーケードシューティングゲームです。"
+    },
+    "instructions": {
+        "en": "Indie Studio XYZ",
+        "ko": "인디 스튜디오 XYZ 제작",
+        "jp": "インディースタジオXYZ製作"
+    },
     "id":"Chess",
     "main_file": "index.html",
     "resolution":"1024*786",

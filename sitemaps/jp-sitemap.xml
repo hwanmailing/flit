@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <!-- jp -->
+  <url>
+    <loc>https://www.moly.win/jp/index.html</loc>
+    <xhtml:link rel="alternate" hreflang="jp" href="https://www.moly.win/jp/index.html"/>
+    <lastmod>2025-11-08T19:19:41.306Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.moly.win/games/Arcade/Minesweeper/jp/detail.html</loc>
+    <xhtml:link rel="alternate" hreflang="jp" href="https://www.moly.win/games/Arcade/Minesweeper/jp/detail.html"/>
+    <lastmod>2025-11-08T19:19:41.306Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.moly.win/games/Arcade/circus/jp/detail.html</loc>
+    <xhtml:link rel="alternate" hreflang="jp" href="https://www.moly.win/games/Arcade/circus/jp/detail.html"/>
+    <lastmod>2025-11-08T19:19:41.306Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.moly.win/games/Board/chess/jp/detail.html</loc>
+    <xhtml:link rel="alternate" hreflang="jp" href="https://www.moly.win/games/Board/chess/jp/detail.html"/>
+    <lastmod>2025-11-08T19:19:41.306Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.moly.win/games/Escape/dante/jp/detail.html</loc>
+    <xhtml:link rel="alternate" hreflang="jp" href="https://www.moly.win/games/Escape/dante/jp/detail.html"/>
+    <lastmod>2025-11-08T19:19:41.306Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.moly.win/games/Logic/Gravity Puzzle/jp/detail.html</loc>
+    <xhtml:link rel="alternate" hreflang="jp" href="https://www.moly.win/games/Logic/Gravity Puzzle/jp/detail.html"/>
+    <lastmod>2025-11-08T19:19:41.306Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.moly.win/games/Logic/ludum/jp/detail.html</loc>
+    <xhtml:link rel="alternate" hreflang="jp" href="https://www.moly.win/games/Logic/ludum/jp/detail.html"/>
+    <lastmod>2025-11-08T19:19:41.306Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.moly.win/games/Race/gopher/jp/detail.html</loc>
+    <xhtml:link rel="alternate" hreflang="jp" href="https://www.moly.win/games/Race/gopher/jp/detail.html"/>
+    <lastmod>2025-11-08T19:19:41.306Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.moly.win/games/platformer/JumpingDead/jp/detail.html</loc>
+    <xhtml:link rel="alternate" hreflang="jp" href="https://www.moly.win/games/platformer/JumpingDead/jp/detail.html"/>
+    <lastmod>2025-11-08T19:19:41.306Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.moly.win/games/platformer/NGon/jp/detail.html</loc>
+    <xhtml:link rel="alternate" hreflang="jp" href="https://www.moly.win/games/platformer/NGon/jp/detail.html"/>
+    <lastmod>2025-11-08T19:19:41.306Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.moly.win/games/platformer/elemental/jp/detail.html</loc>
+    <xhtml:link rel="alternate" hreflang="jp" href="https://www.moly.win/games/platformer/elemental/jp/detail.html"/>
+    <lastmod>2025-11-08T19:19:41.306Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.moly.win/games/platformer/spelunky/jp/detail.html</loc>
+    <xhtml:link rel="alternate" hreflang="jp" href="https://www.moly.win/games/platformer/spelunky/jp/detail.html"/>
+    <lastmod>2025-11-08T19:19:41.306Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
