@@ -37,7 +37,7 @@ window.GAMES_DB_DATA = [
   {
     "idx": 4,
     "id": "Dante",
-    "view_count": 0,
+    "view_count": 1,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
@@ -59,7 +59,7 @@ window.GAMES_DB_DATA = [
   {
     "idx": 6,
     "id": "Ludum",
-    "view_count": 0,
+    "view_count": 1,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
@@ -92,7 +92,7 @@ window.GAMES_DB_DATA = [
   {
     "idx": 9,
     "id": "NGon",
-    "view_count": 0,
+    "view_count": 1,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
