@@ -50,4 +50,8 @@ jobs:
             git commit -m "chore: auto update info_.js with latest D1 data [skip ci]"
             git push
             echo "✅ Successfully pushed updated info_.js"
+<<<<<<< HEAD
           fi
+=======
+          fi
+>>>>>>> 4cbfb64f62805b36778b80369fdfbf0402db5a10
