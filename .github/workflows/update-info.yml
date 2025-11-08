@@ -36,9 +36,7 @@ jobs:
       - name: Test writing info_.js
         run: |
           echo "3️⃣ Testing writing info_.js..."
-          cat > info_.js <<'EOF'
-window.GAMES_DB_DATA =
-EOF
+          echo "window.GAMES_DB_DATA =" > info_.js
           echo "$GAMES_DATA" | jq '.' >> info_.js
           echo ";" >> info_.js
           echo "✅ info_.js created. First 10 lines:"
