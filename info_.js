@@ -16,11 +16,11 @@ window.GAMES_DB_DATA = [
     "idx": 2,
     "id": "RetroCircus",
     "view_count": 0,
-    "like_count": 0,
+    "like_count": 1,
     "score": 0,
-    "rating_total": 0,
-    "rating_count": 0,
-    "rating_avg": 0,
+    "rating_total": 4,
+    "rating_count": 1,
+    "rating_avg": 4,
     "created_at": "2025-11-04 10:41:42"
   },
   {
