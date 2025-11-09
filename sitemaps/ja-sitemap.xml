@@ -3,97 +3,97 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <!-- ja -->
   <url>
-    <loc>https://www.moly.win/ja/index</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.moly.win/ja/index"/>
-    <lastmod>2025-11-09T06:58:51.498Z</lastmod>
+    <loc>https://www.flit.games/ja/index</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.flit.games/ja/index"/>
+    <lastmod>2025-11-09T12:01:57.731Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://www.moly.win/games/Arcade/Minesweeper/ja/detail</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.moly.win/games/Arcade/Minesweeper/ja/detail"/>
-    <lastmod>2025-11-09T06:58:51.498Z</lastmod>
+    <loc>https://www.flit.games/games/Arcade/Minesweeper/ja/detail</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.flit.games/games/Arcade/Minesweeper/ja/detail"/>
+    <lastmod>2025-11-09T12:01:57.731Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.moly.win/games/Arcade/circus/ja/detail</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.moly.win/games/Arcade/circus/ja/detail"/>
-    <lastmod>2025-11-09T06:58:51.498Z</lastmod>
+    <loc>https://www.flit.games/games/Arcade/circus/ja/detail</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.flit.games/games/Arcade/circus/ja/detail"/>
+    <lastmod>2025-11-09T12:01:57.731Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.moly.win/games/Board/chess/ja/detail</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.moly.win/games/Board/chess/ja/detail"/>
-    <lastmod>2025-11-09T06:58:51.498Z</lastmod>
+    <loc>https://www.flit.games/games/Board/chess/ja/detail</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.flit.games/games/Board/chess/ja/detail"/>
+    <lastmod>2025-11-09T12:01:57.731Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.moly.win/games/Escape/dante/ja/detail</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.moly.win/games/Escape/dante/ja/detail"/>
-    <lastmod>2025-11-09T06:58:51.498Z</lastmod>
+    <loc>https://www.flit.games/games/Escape/dante/ja/detail</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.flit.games/games/Escape/dante/ja/detail"/>
+    <lastmod>2025-11-09T12:01:57.731Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.moly.win/games/Logic/Gravity Puzzle/ja/detail</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.moly.win/games/Logic/Gravity Puzzle/ja/detail"/>
-    <lastmod>2025-11-09T06:58:51.498Z</lastmod>
+    <loc>https://www.flit.games/games/Logic/Gravity Puzzle/ja/detail</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.flit.games/games/Logic/Gravity Puzzle/ja/detail"/>
+    <lastmod>2025-11-09T12:01:57.731Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.moly.win/games/Logic/ludum/ja/detail</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.moly.win/games/Logic/ludum/ja/detail"/>
-    <lastmod>2025-11-09T06:58:51.498Z</lastmod>
+    <loc>https://www.flit.games/games/Logic/ludum/ja/detail</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.flit.games/games/Logic/ludum/ja/detail"/>
+    <lastmod>2025-11-09T12:01:57.731Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.moly.win/games/Race/gopher/ja/detail</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.moly.win/games/Race/gopher/ja/detail"/>
-    <lastmod>2025-11-09T06:58:51.498Z</lastmod>
+    <loc>https://www.flit.games/games/Race/gopher/ja/detail</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.flit.games/games/Race/gopher/ja/detail"/>
+    <lastmod>2025-11-09T12:01:57.731Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.moly.win/games/platformer/JumpingDead/ja/detail</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.moly.win/games/platformer/JumpingDead/ja/detail"/>
-    <lastmod>2025-11-09T06:58:51.498Z</lastmod>
+    <loc>https://www.flit.games/games/platformer/JumpingDead/ja/detail</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.flit.games/games/platformer/JumpingDead/ja/detail"/>
+    <lastmod>2025-11-09T12:01:57.731Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.moly.win/games/platformer/NGon/ja/detail</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.moly.win/games/platformer/NGon/ja/detail"/>
-    <lastmod>2025-11-09T06:58:51.498Z</lastmod>
+    <loc>https://www.flit.games/games/platformer/NGon/ja/detail</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.flit.games/games/platformer/NGon/ja/detail"/>
+    <lastmod>2025-11-09T12:01:57.731Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.moly.win/games/platformer/elemental/ja/detail</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.moly.win/games/platformer/elemental/ja/detail"/>
-    <lastmod>2025-11-09T06:58:51.498Z</lastmod>
+    <loc>https://www.flit.games/games/platformer/elemental/ja/detail</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.flit.games/games/platformer/elemental/ja/detail"/>
+    <lastmod>2025-11-09T12:01:57.731Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://www.moly.win/games/platformer/spelunky/ja/detail</loc>
-    <xhtml:link rel="alternate" hreflang="ja" href="https://www.moly.win/games/platformer/spelunky/ja/detail"/>
-    <lastmod>2025-11-09T06:58:51.498Z</lastmod>
+    <loc>https://www.flit.games/games/platformer/spelunky/ja/detail</loc>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://www.flit.games/games/platformer/spelunky/ja/detail"/>
+    <lastmod>2025-11-09T12:01:57.731Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

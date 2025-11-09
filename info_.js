@@ -10,18 +10,18 @@ window.GAMES_DB_DATA = [
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-04 10:41:40"
+    "created_at": "2025-11-09 12:00:46"
   },
   {
     "idx": 2,
     "id": "RetroCircus",
-    "view_count": 8,
-    "like_count": 1,
+    "view_count": 0,
+    "like_count": 0,
     "score": 0,
-    "rating_total": 4,
-    "rating_count": 1,
-    "rating_avg": 4,
-    "created_at": "2025-11-04 10:41:42"
+    "rating_total": 0,
+    "rating_count": 0,
+    "rating_avg": 0,
+    "created_at": "2025-11-09 12:00:47"
   },
   {
     "idx": 3,
@@ -32,18 +32,18 @@ window.GAMES_DB_DATA = [
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-04 10:41:43"
+    "created_at": "2025-11-09 12:00:49"
   },
   {
     "idx": 4,
     "id": "Dante",
-    "view_count": 1,
+    "view_count": 0,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-04 10:41:45"
+    "created_at": "2025-11-09 12:00:50"
   },
   {
     "idx": 5,
@@ -54,18 +54,18 @@ window.GAMES_DB_DATA = [
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-04 10:41:46"
+    "created_at": "2025-11-09 12:00:51"
   },
   {
     "idx": 6,
     "id": "Ludum",
-    "view_count": 2,
+    "view_count": 0,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-04 10:41:48"
+    "created_at": "2025-11-09 12:00:53"
   },
   {
     "idx": 7,
@@ -76,7 +76,7 @@ window.GAMES_DB_DATA = [
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-04 10:41:49"
+    "created_at": "2025-11-09 12:00:54"
   },
   {
     "idx": 8,
@@ -87,18 +87,18 @@ window.GAMES_DB_DATA = [
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-04 10:41:51"
+    "created_at": "2025-11-09 12:00:55"
   },
   {
     "idx": 9,
     "id": "NGon",
-    "view_count": 1,
+    "view_count": 0,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-04 10:41:52"
+    "created_at": "2025-11-09 12:00:56"
   },
   {
     "idx": 10,
@@ -109,7 +109,7 @@ window.GAMES_DB_DATA = [
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-04 10:41:53"
+    "created_at": "2025-11-09 12:00:58"
   },
   {
     "idx": 11,
@@ -120,6 +120,6 @@ window.GAMES_DB_DATA = [
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-04 10:41:55"
+    "created_at": "2025-11-09 12:00:59"
   }
 ];

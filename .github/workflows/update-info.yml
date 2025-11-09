@@ -47,7 +47,7 @@ jobs:
             echo "ℹ️ No changes in info_.js, skipping commit."
           else
             git add info_.js
-            git commit -m "chore: auto update info_.js with latest D1 data [skip ci]"
+            git commit -m "testing"
             git push
             echo "✅ Successfully pushed updated info_.js"
           fi
