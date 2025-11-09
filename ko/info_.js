@@ -15,7 +15,7 @@ window.GAMES_DB_DATA = [
   {
     "idx": 2,
     "id": "RetroCircus",
-    "view_count": 2,
+    "view_count": 4,
     "like_count": 1,
     "score": 0,
     "rating_total": 4,
@@ -59,7 +59,7 @@ window.GAMES_DB_DATA = [
   {
     "idx": 6,
     "id": "Ludum",
-    "view_count": 1,
+    "view_count": 2,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
