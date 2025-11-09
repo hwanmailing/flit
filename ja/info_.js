@@ -15,7 +15,7 @@ window.GAMES_DB_DATA = [
   {
     "idx": 2,
     "id": "RetroCircus",
-    "view_count": 6,
+    "view_count": 8,
     "like_count": 1,
     "score": 0,
     "rating_total": 4,
