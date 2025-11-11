@@ -67,41 +67,7 @@ jobs:
               }
 
               const repoRoot = process.cwd();
-              const gamesSourceRoot = path.join(repoRoot, 'Games');
               const outputRoot = path.join(repoRoot, 'TestWebsite', 'games');
-
-              const mapping = new Map();
-              const categoryEntries = await fs.readdir(gamesSourceRoot, { withFileTypes: true });
-
-              for (const categoryEntry of categoryEntries) {
-                if (!categoryEntry.isDirectory()) continue;
-                const category = categoryEntry.name;
-                const categoryPath = path.join(gamesSourceRoot, category);
-                const gameEntries = await fs.readdir(categoryPath, { withFileTypes: true });
-
-                for (const gameEntry of gameEntries) {
-                  if (!gameEntry.isDirectory()) continue;
-                  const folder = gameEntry.name;
-                  const infoPath = path.join(categoryPath, folder, 'info_.json');
-                  try {
-                    const infoRaw = await fs.readFile(infoPath, 'utf8');
-                    const info = JSON.parse(infoRaw);
-                    const gameId = info.id || info.ID || info.game_id;
-                    if (!gameId) {
-                      console.warn(`⚠️  Missing game id in ${category}/${folder}, skipping.`);
-                      continue;
-                    }
-                    mapping.set(String(gameId), { category, folder });
-                  } catch (error) {
-                    console.warn(`⚠️  Failed to read info_.json for ${category}/${folder}: ${error.message}`);
-                  }
-                }
-              }
-
-              if (mapping.size === 0) {
-                throw new Error('Could not map any game ids to local folders.');
-              }
-
               let totalFiles = 0;
               let totalComments = 0;
 
@@ -109,9 +75,11 @@ jobs:
                 const gameId = game.id || game.game_id;
                 if (!gameId) continue;
 
-                const location = mapping.get(String(gameId));
-                if (!location) {
-                  console.warn(`⚠️  No local folder mapped for game id ${gameId}, skipping.`);
+                const gameCategory = game.category || game.game_category || 'Uncategorized';
+                const gameFolder = game.folder || game.game_folder || gameId;
+
+                if (!gameCategory || !gameFolder) {
+                  console.warn(`⚠️  Missing category or folder info for game id ${gameId}, skipping.`);
                   continue;
                 }
 
@@ -149,8 +117,8 @@ jobs:
                       : [];
 
                   const relativeDir = lang === 'en'
-                    ? path.join(location.category, location.folder)
-                    : path.join(location.category, location.folder, lang);
+                    ? path.join(gameCategory, gameFolder)
+                    : path.join(gameCategory, gameFolder, lang);
 
                   const outputDir = path.join(outputRoot, relativeDir);
                   await fs.mkdir(outputDir, { recursive: true });
