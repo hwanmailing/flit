@@ -2,7 +2,7 @@ name: Update info_.js
 
 on:
   schedule:
-    - cron: '0 0 * * *'   # UTC 기준, 매일 00:00에 실행 (한국 시간 09:00)
+    - cron: '0 */1 * * *'   # UTC 기준, 매일 00:00에 실행 (한국 시간 09:00)
   workflow_dispatch:      # 수동 실행 가능
 
 jobs:
