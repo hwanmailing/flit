@@ -18,9 +18,9 @@ window.GAMES_DB_DATA = [
     "view_count": 3,
     "like_count": 1,
     "score": 0,
-    "rating_total": 4,
+    "rating_total": 3.5,
     "rating_count": 1,
-    "rating_avg": 4,
+    "rating_avg": 3.5,
     "created_at": "2025-11-09 12:00:47"
   },
   {
@@ -70,7 +70,7 @@ window.GAMES_DB_DATA = [
   {
     "idx": 7,
     "id": "Gopher",
-    "view_count": 0,
+    "view_count": 1,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
@@ -114,7 +114,7 @@ window.GAMES_DB_DATA = [
   {
     "idx": 11,
     "id": "Spelunky",
-    "view_count": 0,
+    "view_count": 1,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,

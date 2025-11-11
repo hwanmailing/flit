@@ -1,0 +1,196 @@
+name: Update comments_.js
+
+on:
+  schedule:
+    - cron: '15 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-comments:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Generate comments_.js files
+        env:
+          API_GAMES_URL: ${{ secrets.API_URL }}
+          COMMENT_LANGS: en
+          COMMENT_LIMIT: 200
+        run: |
+          node - <<'NODE'
+          const fs = require('fs/promises');
+          const path = require('path');
+
+          (async () => {
+            try {
+              const gamesEndpointEnv = process.env.API_GAMES_URL;
+              if (!gamesEndpointEnv) {
+                throw new Error('API_GAMES_URL secret/environment variable is not configured.');
+              }
+
+              const ensureTrailingSlash = (value) => {
+                if (!value.endsWith('/')) {
+                  return `${value}/`;
+                }
+                return value;
+              };
+
+              const gamesEndpoint = ensureTrailingSlash(gamesEndpointEnv.trim());
+              const gamesUrl = new URL(gamesEndpoint);
+
+              const langsEnv = process.env.COMMENT_LANGS || 'en';
+              const langs = langsEnv.split(',').map((lang) => lang.trim()).filter(Boolean);
+              if (langs.length === 0) {
+                langs.push('en');
+              }
+
+              const limitEnv = parseInt(process.env.COMMENT_LIMIT, 10);
+              const commentLimit = Number.isFinite(limitEnv) && limitEnv > 0 ? limitEnv : 200;
+
+              const gamesResponse = await fetch(gamesUrl.toString());
+              if (!gamesResponse.ok) {
+                throw new Error(`Failed to fetch games list: HTTP ${gamesResponse.status}`);
+              }
+              const gamesPayload = await gamesResponse.json();
+              if (!gamesPayload || gamesPayload.success !== true) {
+                throw new Error(`Games API returned success=${gamesPayload && gamesPayload.success}`);
+              }
+
+              const gamesList = Array.isArray(gamesPayload.data)
+                ? gamesPayload.data
+                : Array.isArray(gamesPayload.games)
+                  ? gamesPayload.games
+                  : [];
+
+              if (!Array.isArray(gamesList) || gamesList.length === 0) {
+                console.log('ℹ️  No games returned from API. Nothing to update.');
+                return;
+              }
+
+              const repoRoot = process.cwd();
+              const gamesSourceRoot = path.join(repoRoot, 'Games');
+              const outputRoot = path.join(repoRoot, 'TestWebsite', 'games');
+
+              const mapping = new Map();
+              const categoryEntries = await fs.readdir(gamesSourceRoot, { withFileTypes: true });
+
+              for (const categoryEntry of categoryEntries) {
+                if (!categoryEntry.isDirectory()) continue;
+                const category = categoryEntry.name;
+                const categoryPath = path.join(gamesSourceRoot, category);
+                const gameEntries = await fs.readdir(categoryPath, { withFileTypes: true });
+
+                for (const gameEntry of gameEntries) {
+                  if (!gameEntry.isDirectory()) continue;
+                  const folder = gameEntry.name;
+                  const infoPath = path.join(categoryPath, folder, 'info_.json');
+                  try {
+                    const infoRaw = await fs.readFile(infoPath, 'utf8');
+                    const info = JSON.parse(infoRaw);
+                    const gameId = info.id || info.ID || info.game_id;
+                    if (!gameId) {
+                      console.warn(`⚠️  Missing game id in ${category}/${folder}, skipping.`);
+                      continue;
+                    }
+                    mapping.set(String(gameId), { category, folder });
+                  } catch (error) {
+                    console.warn(`⚠️  Failed to read info_.json for ${category}/${folder}: ${error.message}`);
+                  }
+                }
+              }
+
+              if (mapping.size === 0) {
+                throw new Error('Could not map any game ids to local folders.');
+              }
+
+              let totalFiles = 0;
+              let totalComments = 0;
+
+              for (const game of gamesList) {
+                const gameId = game.id || game.game_id;
+                if (!gameId) continue;
+
+                const location = mapping.get(String(gameId));
+                if (!location) {
+                  console.warn(`⚠️  No local folder mapped for game id ${gameId}, skipping.`);
+                  continue;
+                }
+
+                for (const lang of langs) {
+                  const commentsUrl = new URL(`${encodeURIComponent(gameId)}/comments`, gamesUrl);
+                  commentsUrl.searchParams.set('lang', lang);
+                  commentsUrl.searchParams.set('limit', String(commentLimit));
+
+                  const commentsResponse = await fetch(commentsUrl.toString());
+                  if (!commentsResponse.ok) {
+                    console.warn(`⚠️  Failed to fetch comments for ${gameId} (${lang}): HTTP ${commentsResponse.status}`);
+                    continue;
+                  }
+
+                  let commentsPayload;
+                  try {
+                    commentsPayload = await commentsResponse.json();
+                  } catch (error) {
+                    console.warn(`⚠️  Invalid JSON for ${gameId} (${lang}): ${error.message}`);
+                    continue;
+                  }
+
+                  if (commentsPayload.success === false) {
+                    console.warn(`⚠️  API returned success=false for ${gameId} (${lang}): ${commentsPayload.message || 'unknown error'}`);
+                    continue;
+                  }
+
+                  const comments = Array.isArray(commentsPayload.comments)
+                    ? commentsPayload.comments
+                    : Array.isArray(commentsPayload.data)
+                      ? commentsPayload.data
+                      : [];
+
+                  const relativeDir = lang === 'en'
+                    ? path.join(location.category, location.folder)
+                    : path.join(location.category, location.folder, lang);
+
+                  const outputDir = path.join(outputRoot, relativeDir);
+                  await fs.mkdir(outputDir, { recursive: true });
+                  const outputPath = path.join(outputDir, 'comments_.js');
+
+                  const fileContent = `window.GAME_COMMENTS = ${JSON.stringify(comments, null, 2)};\n`;
+                  await fs.writeFile(outputPath, fileContent, 'utf8');
+
+                  console.log(`📝 ${gameId} (${lang}) -> ${path.join('TestWebsite', 'games', relativeDir, 'comments_.js')} [${comments.length} comments]`);
+                  totalFiles += 1;
+                  totalComments += comments.length;
+                }
+              }
+
+              console.log(`✅ Generated ${totalFiles} comments_.js files (${totalComments} comments total).`);
+            } catch (error) {
+              console.error('❌ Failed to generate comments_.js files:', error);
+              process.exit(1);
+            }
+          })();
+          NODE
+
+      - name: Commit and push if changed
+        env:
+          GIT_USER_NAME: hwanmailing
+          GIT_USER_EMAIL: hwanmailing@github.com
+        run: |
+          git config user.name "$GIT_USER_NAME"
+          git config user.email "$GIT_USER_EMAIL"
+
+          if git diff --quiet -- TestWebsite/games; then
+            echo "ℹ️ No changes detected. Skipping commit."
+          else
+            git add TestWebsite/games
+            git commit -m "chore: refresh comments_.js"
+            git push
+            echo "✅ comments_.js files updated and pushed."
+          fi
