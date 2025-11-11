@@ -35,16 +35,7 @@ jobs:
                 throw new Error('API_GAMES_URL secret/environment variable is not configured.');
               }
 
-              const ensureTrailingSlash = (value) => {
-                if (!value.endsWith('/')) {
-                  return `${value}/`;
-                }
-                return value;
-              };
-
-              const gamesEndpoint = ensureTrailingSlash(gamesEndpointEnv.trim());
-              const gamesUrl = new URL(gamesEndpoint);
-              console.log('🛰️  Fetching games from:', gamesUrl.toString());
+              const gamesUrl = new URL(gamesEndpointEnv.trim());
 
               const langsEnv = process.env.COMMENT_LANGS || 'en';
               const langs = langsEnv.split(',').map((lang) => lang.trim()).filter(Boolean);
@@ -125,7 +116,10 @@ jobs:
                 }
 
                 for (const lang of langs) {
-                  const commentsUrl = new URL(`${encodeURIComponent(gameId)}/comments`, gamesUrl);
+                  const commentsUrl = new URL(gamesUrl.toString());
+                  commentsUrl.search = '';
+                  commentsUrl.pathname = commentsUrl.pathname.replace(/\/$/, '');
+                  commentsUrl.pathname += `/${encodeURIComponent(gameId)}/comments`;
                   commentsUrl.searchParams.set('lang', lang);
                   commentsUrl.searchParams.set('limit', String(commentLimit));
 
