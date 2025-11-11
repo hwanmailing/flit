@@ -4,122 +4,133 @@ window.GAMES_DB_DATA = [
   {
     "idx": 1,
     "id": "Minesweeper",
+    "category": "Arcade",
     "view_count": 0,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-09 12:00:46"
+    "created_at": "2025-11-11 12:33:52"
   },
   {
     "idx": 2,
     "id": "RetroCircus",
-    "view_count": 3,
-    "like_count": 1,
+    "category": "Arcade",
+    "view_count": 0,
+    "like_count": 0,
     "score": 0,
-    "rating_total": 3.5,
-    "rating_count": 1,
-    "rating_avg": 3.5,
-    "created_at": "2025-11-09 12:00:47"
+    "rating_total": 0,
+    "rating_count": 0,
+    "rating_avg": 0,
+    "created_at": "2025-11-11 12:33:54"
   },
   {
     "idx": 3,
     "id": "Chess",
+    "category": "Board",
     "view_count": 0,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-09 12:00:49"
+    "created_at": "2025-11-11 12:33:55"
   },
   {
     "idx": 4,
     "id": "Dante",
-    "view_count": 1,
+    "category": "Escape",
+    "view_count": 0,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-09 12:00:50"
+    "created_at": "2025-11-11 12:33:56"
   },
   {
     "idx": 5,
     "id": "ROTA",
+    "category": "Logic",
     "view_count": 0,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-09 12:00:51"
+    "created_at": "2025-11-11 12:33:57"
   },
   {
     "idx": 6,
     "id": "Ludum",
+    "category": "Logic",
     "view_count": 0,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-09 12:00:53"
+    "created_at": "2025-11-11 12:33:59"
   },
   {
     "idx": 7,
     "id": "Gopher",
-    "view_count": 1,
+    "category": "Race",
+    "view_count": 0,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-09 12:00:54"
+    "created_at": "2025-11-11 12:34:00"
   },
   {
     "idx": 8,
     "id": "JumpingDead",
+    "category": "platformer",
     "view_count": 0,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-09 12:00:55"
+    "created_at": "2025-11-11 12:34:02"
   },
   {
     "idx": 9,
     "id": "NGon",
+    "category": "platformer",
     "view_count": 0,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-09 12:00:56"
+    "created_at": "2025-11-11 12:34:03"
   },
   {
     "idx": 10,
     "id": "Elemental",
+    "category": "platformer",
     "view_count": 0,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-09 12:00:58"
+    "created_at": "2025-11-11 12:34:04"
   },
   {
     "idx": 11,
     "id": "Spelunky",
-    "view_count": 1,
+    "category": "platformer",
+    "view_count": 0,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
-    "created_at": "2025-11-09 12:00:59"
+    "created_at": "2025-11-11 12:34:06"
   }
 ];

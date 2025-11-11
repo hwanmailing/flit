@@ -20,7 +20,7 @@ jobs:
 
       - name: Generate comments_.js files
         env:
-          API_GAMES_URL: ${{ secrets.API_URL }}
+          GAME_LIST_URL: ${{ secrets.GAME_LIST_URL }}
           COMMENT_LANGS: en
           COMMENT_LIMIT: 200
         run: |
@@ -30,9 +30,9 @@ jobs:
 
           (async () => {
             try {
-              const gamesEndpointEnv = process.env.API_GAMES_URL;
+              const gamesEndpointEnv = process.env.GAME_LIST_URL;
               if (!gamesEndpointEnv) {
-                throw new Error('API_GAMES_URL secret/environment variable is not configured.');
+                throw new Error('GAME_LIST_URL secret/environment variable is not configured.');
               }
 
               const gamesUrl = new URL(gamesEndpointEnv.trim());
@@ -75,13 +75,7 @@ jobs:
                 const gameId = game.id || game.game_id;
                 if (!gameId) continue;
 
-                const gameCategory = game.category || game.game_category || 'Uncategorized';
-                const gameFolder = game.folder || game.game_folder || gameId;
-
-                if (!gameCategory || !gameFolder) {
-                  console.warn(`⚠️  Missing category or folder info for game id ${gameId}, skipping.`);
-                  continue;
-                }
+                const gameCategory = (game.category || game.game_category || 'Uncategorized').trim() || 'Uncategorized';
 
                 for (const lang of langs) {
                   const commentsUrl = new URL(gamesUrl.toString());
@@ -117,8 +111,8 @@ jobs:
                       : [];
 
                   const relativeDir = lang === 'en'
-                    ? path.join(gameCategory, gameFolder)
-                    : path.join(gameCategory, gameFolder, lang);
+                    ? path.join(gameCategory, gameId)
+                    : path.join(gameCategory, gameId, lang);
 
                   const outputDir = path.join(outputRoot, relativeDir);
                   await fs.mkdir(outputDir, { recursive: true });
