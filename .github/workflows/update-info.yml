@@ -47,7 +47,7 @@ jobs:
             echo "ℹ️ No changes in info_.js, skipping commit."
           else
             git add info_.js
-            git commit -m "testing"
+            git commit -m "testing info"
             git push
             echo "✅ Successfully pushed updated info_.js"
           fi

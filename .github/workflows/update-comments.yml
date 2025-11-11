@@ -153,7 +153,7 @@ jobs:
             echo "ℹ️ No changes detected. Skipping commit."
           else
             git add TestWebsite/games
-            git commit -m "testing"
+            git commit -m "testing comments"
             git push
             echo "✅ comments_.js files updated and pushed."
           fi
