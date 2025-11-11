@@ -15,9 +15,10 @@ jobs:
       - name: Fetch games data from Cloudflare D1 API
         env:
           API_URL: ${{ secrets.API_URL }}
+          MY_API_KEY: ${{ secrets.MY_API_KEY }}
         run: |
           echo "1️⃣ Fetching games data from Cloudflare D1..."
-          RESPONSE=$(curl -fsS "$API_URL") || { echo "❌ API fetch failed"; exit 1; }
+          RESPONSE=$(curl -fsS -H "X-API-KEY: $MY_API_KEY" "$API_URL") || { echo "❌ API fetch failed"; exit 1; }
           SUCCESS=$(echo "$RESPONSE" | jq -r '.success')
           if [ "$SUCCESS" != "true" ]; then
             echo "❌ API returned success: false"

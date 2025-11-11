@@ -21,6 +21,7 @@ jobs:
       - name: Generate comments_.js files
         env:
           GAME_LIST_URL: ${{ secrets.GAME_LIST_URL }}
+          MY_API_KEY: ${{ secrets.MY_API_KEY }}
           COMMENT_LANGS: en
           COMMENT_LIMIT: 200
         run: |
@@ -30,6 +31,11 @@ jobs:
 
           (async () => {
             try {
+              const apiKey = process.env.MY_API_KEY;
+              if (!apiKey) {
+                throw new Error('MY_API_KEY secret/environment variable is not configured.');
+              }
+
               const gamesEndpointEnv = process.env.GAME_LIST_URL;
               if (!gamesEndpointEnv) {
                 throw new Error('GAME_LIST_URL secret/environment variable is not configured.');
@@ -48,7 +54,11 @@ jobs:
               const limitEnv = parseInt(process.env.COMMENT_LIMIT, 10);
               const commentLimit = Number.isFinite(limitEnv) && limitEnv > 0 ? limitEnv : 200;
 
-              const gamesResponse = await fetch(gamesUrl.toString());
+              const gamesResponse = await fetch(gamesUrl.toString(), {
+                headers: {
+                  'X-API-KEY': apiKey
+                }
+              });
               if (!gamesResponse.ok) {
                 throw new Error(`Failed to fetch games list: HTTP ${gamesResponse.status}`);
               }
@@ -87,7 +97,11 @@ jobs:
                   commentsUrl.searchParams.set('lang', lang);
                   commentsUrl.searchParams.set('limit', String(commentLimit));
 
-                  const commentsResponse = await fetch(commentsUrl.toString());
+                  const commentsResponse = await fetch(commentsUrl.toString(), {
+                    headers: {
+                      'X-API-KEY': apiKey
+                    }
+                  });
                   if (!commentsResponse.ok) {
                     console.warn(`⚠️  Failed to fetch comments for ${gameId} (${lang}): HTTP ${commentsResponse.status}`);
                     continue;
