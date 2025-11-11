@@ -36,6 +36,8 @@ jobs:
               }
 
               const gamesUrl = new URL(gamesEndpointEnv.trim());
+              const commentsBaseUrl = new URL(gamesUrl.toString());
+              commentsBaseUrl.pathname = commentsBaseUrl.pathname.replace(/\/catalog\/?$/, '');
 
               const langsEnv = process.env.COMMENT_LANGS || 'en';
               const langs = langsEnv.split(',').map((lang) => lang.trim()).filter(Boolean);
@@ -78,7 +80,7 @@ jobs:
                 const gameCategory = (game.category || game.game_category || 'Uncategorized').trim() || 'Uncategorized';
 
                 for (const lang of langs) {
-                  const commentsUrl = new URL(gamesUrl.toString());
+                  const commentsUrl = new URL(commentsBaseUrl.toString());
                   commentsUrl.search = '';
                   commentsUrl.pathname = commentsUrl.pathname.replace(/\/$/, '');
                   commentsUrl.pathname += `/${encodeURIComponent(gameId)}/comments`;
