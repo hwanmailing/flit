@@ -1,1 +1,0 @@
-window.GAME_COMMENTS = [];
