@@ -44,6 +44,7 @@ jobs:
 
               const gamesEndpoint = ensureTrailingSlash(gamesEndpointEnv.trim());
               const gamesUrl = new URL(gamesEndpoint);
+              console.log('🛰️  Fetching games from:', gamesUrl.toString());
 
               const langsEnv = process.env.COMMENT_LANGS || 'en';
               const langs = langsEnv.split(',').map((lang) => lang.trim()).filter(Boolean);
@@ -190,7 +191,7 @@ jobs:
             echo "ℹ️ No changes detected. Skipping commit."
           else
             git add TestWebsite/games
-            git commit -m "chore: refresh comments_.js"
+            git commit -m "testing"
             git push
             echo "✅ comments_.js files updated and pushed."
           fi
