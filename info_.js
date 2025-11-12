@@ -8,22 +8,10 @@ window.GAMES_DB_DATA = [
     "view_count": 0,
     "like_count": 1,
     "score": 0,
-    "rating_total": 2.5,
-    "rating_count": 1,
-    "rating_avg": 2.5,
+    "rating_total": 0,
+    "rating_count": 0,
+    "rating_avg": 0,
     "created_at": "2025-11-11 12:33:52"
-  },
-  {
-    "idx": 2,
-    "id": "RetroCircus",
-    "category": "Arcade",
-    "view_count": 0,
-    "like_count": 0,
-    "score": 0,
-    "rating_total": 4,
-    "rating_count": 1,
-    "rating_avg": 4,
-    "created_at": "2025-11-11 12:33:54"
   },
   {
     "idx": 3,
@@ -32,21 +20,21 @@ window.GAMES_DB_DATA = [
     "view_count": 0,
     "like_count": 0,
     "score": 0,
-    "rating_total": 3,
-    "rating_count": 1,
-    "rating_avg": 3,
+    "rating_total": 0,
+    "rating_count": 0,
+    "rating_avg": 0,
     "created_at": "2025-11-11 12:33:55"
   },
   {
     "idx": 4,
     "id": "Dante",
     "category": "Escape",
-    "view_count": 0,
+    "view_count": 1,
     "like_count": 1,
     "score": 0,
-    "rating_total": 3,
-    "rating_count": 1,
-    "rating_avg": 3,
+    "rating_total": 0,
+    "rating_count": 0,
+    "rating_avg": 0,
     "created_at": "2025-11-11 12:33:56"
   },
   {
@@ -56,9 +44,9 @@ window.GAMES_DB_DATA = [
     "view_count": 0,
     "like_count": 0,
     "score": 0,
-    "rating_total": 1.5,
-    "rating_count": 1,
-    "rating_avg": 1.5,
+    "rating_total": 0,
+    "rating_count": 0,
+    "rating_avg": 0,
     "created_at": "2025-11-11 12:33:57"
   },
   {
@@ -137,12 +125,24 @@ window.GAMES_DB_DATA = [
     "idx": 12,
     "id": "abobosbigadventure",
     "category": "platformer",
-    "view_count": 0,
+    "view_count": 1,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
     "created_at": "2025-11-12 13:19:03"
+  },
+  {
+    "idx": 13,
+    "id": "RetroCircus",
+    "category": "Arcade",
+    "view_count": 0,
+    "like_count": 0,
+    "score": 0,
+    "rating_total": 0,
+    "rating_count": 0,
+    "rating_avg": 0,
+    "created_at": "2025-11-12 14:03:38"
   }
 ];
