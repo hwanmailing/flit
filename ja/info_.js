@@ -6,24 +6,12 @@ window.GAMES_DB_DATA = [
     "id": "Minesweeper",
     "category": "Arcade",
     "view_count": 0,
-    "like_count": 0,
+    "like_count": 1,
     "score": 0,
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
     "created_at": "2025-11-11 12:33:52"
-  },
-  {
-    "idx": 2,
-    "id": "RetroCircus",
-    "category": "Arcade",
-    "view_count": 0,
-    "like_count": 1,
-    "score": 0,
-    "rating_total": 4,
-    "rating_count": 1,
-    "rating_avg": 4,
-    "created_at": "2025-11-11 12:33:54"
   },
   {
     "idx": 3,
@@ -41,25 +29,13 @@ window.GAMES_DB_DATA = [
     "idx": 4,
     "id": "Dante",
     "category": "Escape",
-    "view_count": 0,
-    "like_count": 0,
+    "view_count": 1,
+    "like_count": 1,
     "score": 0,
     "rating_total": 0,
     "rating_count": 0,
     "rating_avg": 0,
     "created_at": "2025-11-11 12:33:56"
-  },
-  {
-    "idx": 5,
-    "id": "ROTA",
-    "category": "Logic",
-    "view_count": 0,
-    "like_count": 0,
-    "score": 0,
-    "rating_total": 0,
-    "rating_count": 0,
-    "rating_avg": 0,
-    "created_at": "2025-11-11 12:33:57"
   },
   {
     "idx": 6,
@@ -132,5 +108,29 @@ window.GAMES_DB_DATA = [
     "rating_count": 0,
     "rating_avg": 0,
     "created_at": "2025-11-11 12:34:06"
+  },
+  {
+    "idx": 12,
+    "id": "abobosbigadventure",
+    "category": "Action",
+    "view_count": 1,
+    "like_count": 0,
+    "score": 0,
+    "rating_total": 0,
+    "rating_count": 0,
+    "rating_avg": 0,
+    "created_at": "2025-11-12 13:19:03"
+  },
+  {
+    "idx": 13,
+    "id": "RetroCircus",
+    "category": "Arcade",
+    "view_count": 0,
+    "like_count": 0,
+    "score": 0,
+    "rating_total": 0,
+    "rating_count": 0,
+    "rating_avg": 0,
+    "created_at": "2025-11-12 14:03:38"
   }
 ];
