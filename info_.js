@@ -32,9 +32,9 @@ window.GAMES_DB_DATA = [
     "view_count": 0,
     "like_count": 0,
     "score": 0,
-    "rating_total": 0,
-    "rating_count": 0,
-    "rating_avg": 0,
+    "rating_total": 3,
+    "rating_count": 1,
+    "rating_avg": 3,
     "created_at": "2025-11-11 12:33:55"
   },
   {
@@ -56,9 +56,9 @@ window.GAMES_DB_DATA = [
     "view_count": 0,
     "like_count": 0,
     "score": 0,
-    "rating_total": 0,
-    "rating_count": 0,
-    "rating_avg": 0,
+    "rating_total": 1.5,
+    "rating_count": 1,
+    "rating_avg": 1.5,
     "created_at": "2025-11-11 12:33:57"
   },
   {
