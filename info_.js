@@ -1,10 +1,8 @@
-// Games 테이블 데이터 (빌드 시 생성됨)
-// 이 파일은 빌드 시 D1 데이터베이스에서 자동으로 생성됩니다.
-window.GAMES_DB_DATA = [
+window.GAMES_DB_DATA =
+[
   {
     "idx": 1,
     "id": "Minesweeper",
-    "category": "Arcade",
     "view_count": 0,
     "like_count": 1,
     "score": 0,
@@ -16,7 +14,6 @@ window.GAMES_DB_DATA = [
   {
     "idx": 3,
     "id": "Chess",
-    "category": "Board",
     "view_count": 0,
     "like_count": 0,
     "score": 0,
@@ -28,8 +25,7 @@ window.GAMES_DB_DATA = [
   {
     "idx": 4,
     "id": "Dante",
-    "category": "Escape",
-    "view_count": 3,
+    "view_count": 4,
     "like_count": 1,
     "score": 0,
     "rating_total": 0,
@@ -40,7 +36,6 @@ window.GAMES_DB_DATA = [
   {
     "idx": 6,
     "id": "Ludum",
-    "category": "Logic",
     "view_count": 0,
     "like_count": 0,
     "score": 0,
@@ -52,7 +47,6 @@ window.GAMES_DB_DATA = [
   {
     "idx": 7,
     "id": "Gopher",
-    "category": "Race",
     "view_count": 0,
     "like_count": 0,
     "score": 0,
@@ -64,7 +58,6 @@ window.GAMES_DB_DATA = [
   {
     "idx": 8,
     "id": "JumpingDead",
-    "category": "platformer",
     "view_count": 0,
     "like_count": 0,
     "score": 0,
@@ -76,7 +69,6 @@ window.GAMES_DB_DATA = [
   {
     "idx": 9,
     "id": "NGon",
-    "category": "platformer",
     "view_count": 0,
     "like_count": 0,
     "score": 0,
@@ -88,7 +80,6 @@ window.GAMES_DB_DATA = [
   {
     "idx": 10,
     "id": "Elemental",
-    "category": "platformer",
     "view_count": 0,
     "like_count": 0,
     "score": 0,
@@ -100,7 +91,6 @@ window.GAMES_DB_DATA = [
   {
     "idx": 11,
     "id": "Spelunky",
-    "category": "platformer",
     "view_count": 0,
     "like_count": 0,
     "score": 0,
@@ -112,8 +102,7 @@ window.GAMES_DB_DATA = [
   {
     "idx": 12,
     "id": "abobosbigadventure",
-    "category": "Action",
-    "view_count": 6,
+    "view_count": 7,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
@@ -124,7 +113,6 @@ window.GAMES_DB_DATA = [
   {
     "idx": 13,
     "id": "RetroCircus",
-    "category": "Arcade",
     "view_count": 0,
     "like_count": 0,
     "score": 0,
@@ -133,4 +121,5 @@ window.GAMES_DB_DATA = [
     "rating_avg": 0,
     "created_at": "2025-11-12 14:03:38"
   }
-];
+]
+;
