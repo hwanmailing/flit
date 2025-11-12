@@ -23,6 +23,8 @@
     "thumbnail": "thumbnail.jpg",
     "is_mobile_game": false,
     "is_prime_game": false,
+    "is_flash_game": false,
+    "external_game_url": "",
     "leftKeys": ["ArrowLeft", "ArrowUp", "ArrowDown", "ArrowRight"],
     "rightKeys": ["W", "A", "S", "D", "Space", "Enter", "Escape"]
   }

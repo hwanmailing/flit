@@ -132,5 +132,17 @@ window.GAMES_DB_DATA = [
     "rating_count": 0,
     "rating_avg": 0,
     "created_at": "2025-11-11 12:34:06"
+  },
+  {
+    "idx": 12,
+    "id": "abobosbigadventure",
+    "category": "platformer",
+    "view_count": 0,
+    "like_count": 0,
+    "score": 0,
+    "rating_total": 0,
+    "rating_count": 0,
+    "rating_avg": 0,
+    "created_at": "2025-11-12 13:19:03"
   }
 ];

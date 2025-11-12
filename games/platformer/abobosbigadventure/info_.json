@@ -1,13 +1,13 @@
 {
   "name": {
-    "en": "🎮 Circus",
-    "ko": "🎪 서커스",
-    "ja": "🎪 サーカス"
+    "en": "🎮 Abobo's Big Adventure",
+    "ko": "🎪 Abobo's Big Adventure",
+    "ja": "🎪 Abobo's Big Adventure"
   },
   "summary": {
-    "en": "Chess is a two-player strategy game.",
-    "ko": "체스는 두 명이 겨루는 전략 게임입니다.",
-    "ja": "チェスは2人で遊ぶ戦略ゲームです。"
+    "en": "Abobo's Big Adventure is a platformer game.",
+    "ko": "Abobo's Big Adventure는 플랫폼 게임입니다.",
+    "ja": "Abobo's Big Adventureはプラットフォームゲームです。"
   },
   "description": {
     "en": "A classic arcade-style shooter where the player controls a spaceship and must defeat waves of incoming aliens.",
@@ -19,14 +19,14 @@
     "ko": "인디 스튜디오 XYZ 제작",
     "ja": "インディースタジオXYZ製作"
   },
-    "id":"RetroCircus",
-    "main_file": "index.html",
+    "id":"abobosbigadventure",
+    "main_file": "",
     "resolution":"1024*786",
     "thumbnail": "thumbnail.jpg",
     "is_mobile_game": false,
     "is_prime_game": false,
-    "is_flash_game": false,
-    "external_game_url": "",
+    "is_flash_game": true,
+    "external_game_url": "https://raw.githubusercontent.com/BinBashBanana/gstore/master/abobosbigadventure.swf",
     "leftKeys": ["ArrowLeft", "ArrowUp", "ArrowDown", "ArrowRight"],
     "rightKeys": ["W", "A", "S", "D", "Space", "Enter", "Escape"]
 
