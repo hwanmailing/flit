@@ -38,18 +38,6 @@ window.GAMES_DB_DATA = [
     "created_at": "2025-11-11 12:33:56"
   },
   {
-    "idx": 5,
-    "id": "ROTA",
-    "category": "Logic",
-    "view_count": 0,
-    "like_count": 0,
-    "score": 0,
-    "rating_total": 0,
-    "rating_count": 0,
-    "rating_avg": 0,
-    "created_at": "2025-11-11 12:33:57"
-  },
-  {
     "idx": 6,
     "id": "Ludum",
     "category": "Logic",
@@ -124,7 +112,7 @@ window.GAMES_DB_DATA = [
   {
     "idx": 12,
     "id": "abobosbigadventure",
-    "category": "platformer",
+    "category": "Action",
     "view_count": 1,
     "like_count": 0,
     "score": 0,
