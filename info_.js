@@ -102,7 +102,7 @@ window.GAMES_DB_DATA =
   {
     "idx": 12,
     "id": "abobosbigadventure",
-    "view_count": 7,
+    "view_count": 8,
     "like_count": 0,
     "score": 0,
     "rating_total": 0,
